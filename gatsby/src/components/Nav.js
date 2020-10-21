@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, navigate } from 'gatsby';
 import styled from 'styled-components';
-import Logo from './logo';
+import Logo from './Logo';
 
 const NavStyles = styled.nav`
   .logo {
