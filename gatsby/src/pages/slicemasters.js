@@ -52,7 +52,7 @@ export default function SlicemastersPage({ data, pageContext }) {
       />
       <SlicemasterGrid>
         {slicemasters.map((person) => (
-          <SlicemasterStyles>
+          <SlicemasterStyles key={person.id}>
             <Link to={`slicemaster/${person.slug.current}`}>
               <h2>
                 <span className="mark">{person.name}</span>
@@ -67,8 +67,9 @@ export default function SlicemastersPage({ data, pageContext }) {
   );
 }
 
+/* TODO figure out how to use the env value in the graphql query below for $pageSize */
 export const query = graphql`
-  query($skip: Int = 0, $pageSize: Int) {
+  query($skip: Int = 0, $pageSize: Int = 3) {
     slicemasters: allSanityPerson(limit: $pageSize, skip: $skip) {
       totalCount
       nodes {
