@@ -149,3 +149,14 @@ export async function createPages(params) {
     turnSlicemastersIntoPages(params),
   ]);
 }
+
+export async function onCreatePage({ page, actions }) {
+  const { createPage, deletePage } = actions;
+  deletePage(page);
+  createPage({
+    ...page,
+    context: {
+      pageSize: parseInt(process.env.GATSBY_PAGE_SIZE),
+    },
+  });
+}

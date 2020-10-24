@@ -69,7 +69,7 @@ export default function SlicemastersPage({ data, pageContext }) {
 
 /* TODO figure out how to use the env value in the graphql query below for $pageSize */
 export const query = graphql`
-  query($skip: Int = 0, $pageSize: Int = 3) {
+  query($skip: Int = 0, $pageSize: Int!) {
     slicemasters: allSanityPerson(limit: $pageSize, skip: $skip) {
       totalCount
       nodes {
